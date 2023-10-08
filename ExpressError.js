@@ -1,4 +1,4 @@
-class ExpressError extends Error{
+class ExpressError extends Error {
     constructor(message, status) {
         //used to call the the parent class
         super();

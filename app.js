@@ -10,13 +10,13 @@ const f = async function (d) {
   return axios.get(`https://api.github.com/users/${d}`);
 }
 
-app.post('/', async function(req, res, next) {
+app.post('/', async function (req, res, next) {
   try {
     //resolves array of promises and returns name and bio
     let results = await Promise.all(req.body.developers.map(f))
-    let out = results.map(r => ({ name: r.data.name, bio: r.data.bio }));   
+    let out = results.map(r => ({ name: r.data.name, bio: r.data.bio }));
     return res.status(201).send(JSON.stringify(out));
-  } catch(err) {
+  } catch (err) {
     next(err);
   }
 });
